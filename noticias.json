@@ -1,0 +1,33 @@
+{
+    "noticias": [
+        {
+            "titulo": "titulo noticia 1",
+            "contenido": "contenido noticia 1"
+        },
+
+        {
+            "titulo": "titulo noticia 2",
+            "contenido": "contenido noticia 2"
+        },
+
+        {
+            "titulo": "titulo noticia 3",
+            "contenido": "contenido noticia 3"
+        },
+
+        {
+            "titulo": "titulo noticia 4",
+            "contenido": "contenido noticia 4"
+        },
+
+        {
+            "titulo": "titulo noticia 5",
+            "contenido": "contenido noticia 5"
+        },
+
+        {
+            "titulo": "titulo noticia 6",
+            "contenido": "contenido noticia 6"
+        }
+    ]
+}

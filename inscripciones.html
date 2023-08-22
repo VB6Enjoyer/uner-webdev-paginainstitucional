@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--RECORDATORIO: La referencia al estilo siempre se colóca acá, en el tag <head>-->
+    <!-- Google Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Import bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="stylesheet.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="imagenes/LOGO-fcad-2.png">
+    <script src="scripts.js"></script>
+    <title>FCAD UNER | Carreras</title>
+</head>
+
+<body>
+    <div class="bodyRegistro">
+        <!-- Bootstrap standard fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="imagenes/LOGO-fcad-2.png" alt="Logo" height="40" class="d-inline-block align-text-middle">
+                    UNER FCAD
+                </a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="institucional.html">Institucional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alumnos.html">Alumnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="materias.html">Materias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="carreras.html">Carreras</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" aria-current="page" href="inscripciones.html">Inscripciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactos.html">Contactos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="imagenHeader">
+            <img src="imagenes/fcad-header.jpg">
+        </div>
+
+        <h1 class="tituloPagina">Inscripción de alumnos</h1>
+        <div class="contenedorFormulario">
+            <form>
+                <fieldset>
+                    <legend>Complete con sus datos</legend>
+                    <div class="fila">
+                        <label for="dniAlu">Alumno:</label>
+                        <select id="dniAlu"></select>
+                    </div>
+                    <div class="fila">
+                        <label for="nomCarrera">Carrera</label>
+                        <select id="nomCarrera"></select>
+                    </div>
+                    <div class="fila">
+                        <label for="nomMateria">Materia</label>
+                        <select id="nomMateria"></select>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="botonCont">
+            <input type="button" onclick="guardarInscripciones()" value="Inscribir">
+            <input type="button" onclick="leerInscripciones()" value="Listar inscripciones">
+            <input type="button" onclick="borrarLocalInscripciones()" value="Borrar inscrip.">
+
+            <div class="barraBusqueda">
+                <input type="text" id="busquedaInscripcion" placeholder="Buscar inscripción">
+                <input type="button" onclick="buscarInscripcion()" id="botonInscripcion" value="Buscar">
+            </div>
+        </div>
+
+        <div class="contenedorTabla">
+            <table class="tablaInscripcion" id="tabInscripcion">
+                <thead>
+                    <tr>
+                        <th>Indice</th>
+                        <th>DNI</th>
+                        <th>Carrera</th>
+                        <th>Materia</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyInscripciones">
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Esto es literalmente un desastre -->
+        <div class="pt-2">
+            <footer class="py-3 pageFooter">
+                <div>
+                    <ul class="justify-content-center nav p-1">
+                        <li class="px-5"><span class="material-symbols-outlined">person</span> Juan Ignacio Núñez</li>
+                        <li class="px-5"><span class="material-symbols-outlined">person</span> Mario Ismael López</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="justify-content-center border-bottom pb-3 nav p-1">
+                        <li><span class="material-symbols-outlined">mail</span> juaninun17@gmail.com</li>
+                        <li><span class="material-symbols-outlined footerContacto">mail</span>
+                            mismalop88@hotmail.com</li>
+                    </ul>
+                </div>
+                <div id="footerBottom" class="py-2 pb-3">
+                    <p id="footerBottomCopyright">UNER FCAD © 2023. Todos los derechos reservados.</p>
+                    <p id="footerBottomAmor">Hecho con ❤️</p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Import Boostrap js -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+            crossorigin="anonymous"></script>
+        <script>
+            window.onload = leerInscripciones(true);
+            window.onload = cargarDatosInscripciones();
+        </script>
+</body>

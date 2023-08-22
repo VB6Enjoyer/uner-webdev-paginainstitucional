@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--RECORDATORIO: La referencia al estilo siempre se colóca acá, en el tag <head>-->
+    <!-- Google Icons -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Import bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link href="stylesheet.css" type="text/css" rel="stylesheet">
+    <link rel="icon" href="imagenes/LOGO-fcad-2.png">
+    <script src="scripts.js"></script>
+    <title>FCAD UNER | Carreras</title>
+</head>
+
+<body>
+    <div class="bodyRegistro">
+        <!-- Bootstrap standard fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img src="imagenes/LOGO-fcad-2.png" alt="Logo" height="40" class="d-inline-block align-text-middle">
+                    UNER FCAD
+                </a>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="institucional.html">Institucional</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="alumnos.html">Alumnos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="materias.html">Materias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="carreras.html">Carreras</a>
+                        </li>
+                        <li>
+                            <a class="nav-link" href="inscripciones.html">Inscripciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contactos.html">Contactos</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="imagenHeader">
+            <img src="imagenes/fcad-header.jpg">
+        </div>
+
+        <h1 class="tituloPagina">Registro de Carreras</h1>
+        <div class="contenedorFormulario">
+            <form id="formCarreras">
+                <fieldset>
+                    <legend>Complete con sus datos</legend>
+                    <div class="fila">
+                        <label for="nombreCar">Nombre:</label>
+                        <input type="text" name="nombre" id="nombreCar" maxlength="50" required autocomplete="off">
+                    </div>
+
+                    <div class="fila">
+                        <label for="tipo">Tipo:</label>
+                        <select id="tipo">
+                            <option value="diplomatura">Diplomatura</option>
+                            <option value="carrera de pregrado">Carrera de pregrado</option>
+                            <option value="carrera de pregrado a termino">Carrera de pregrado a término</option>
+                            <option value="carrera de grado">Carrera de grado</option>
+                            <option value="carrera de posgrado">Carrera de posgrado</option>
+                        </select>
+                    </div>
+
+                    <div class="fila">
+                        <label for="duracion">Duración:</label>
+                        <select id="duracion">
+                            <option value="3 cuatrimestres">3 cuatrimestres</option>
+                            <option value="3 semestres">3 semestres</option>
+                            <option value="6 meses">6 meses</option>
+                            <option value="10 meses">10 meses</option>
+                            <option value="3 años">3 años</option>
+                            <option value="4 años">4 años</option>
+                            <option value="5 años">5 años</option>
+                        </select>
+                    </div>
+
+                    <div class="fila">
+                        <label for="modalidad">Modalidad:</label>
+                        <select id="modalidad">
+                            <option value="virtual">Virtual</option>
+                            <option value="presecial">Presencial</option>
+                            <option value="hibrida">Híbrida</option>
+                        </select>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div class="botonCont">
+            <input type="button" onclick="guardarCarreras()" value="Registrar carrera">
+            <input type="button" onclick="leerCarreras()" value="Lista Carreras">
+            <input type="button" onclick="borrarLocalCarreras()" value="Borrar clave">
+
+            <div class="barraBusqueda">
+                <input type="text" id="barraBusqueda" placeholder="Buscar carrera">
+                <input type="button" onclick="buscarCarrera()" id="botonBuscar" value="Buscar">
+            </div>
+        </div>
+
+        <div class="contenedorTabla">
+            <table class="tablaCar" id="tabCar">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Carrera</th>
+                        <th>Duración</th>
+                        <th>Modalidad</th>
+                        <th>Tipo</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="bodyCarreras">
+                </tbody>
+            </table>
+        </div>
+
+        <div id="myModalCarreras" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="contenedorFormularioSmall">
+                    <form id="modalCarrera">
+                        <fieldset>
+                            <legend>Elija los campos a editar</legend>
+                            <div class="fila">
+                                <label for="carreraModal">Nombre:</label>
+                                <input type="text" name="carreraModal" id="carreraModal" maxlength="50" required
+                                    autocomplete="off">
+                            </div>
+
+                            <div class="fila">
+                                <label for="tipoModal">Tipo:</label>
+                                <select id="tipoModal">
+                                    <option value="diplomatura">Diplomatura</option>
+                                    <option value="carrera de pregrado">Carrera de pregrado</option>
+                                    <option value="carrera de pregrado a termino">Carrera de pregrado a término</option>
+                                    <option value="carrera de grado">Carrera de grado</option>
+                                    <option value="carrera de posgrado">Carrera de posgrado</option>
+                                </select>
+                            </div>
+
+                            <div class="fila">
+                                <label for="duracionModal">Duración:</label>
+                                <select id="duracionModal">
+                                    <option value="3 cuatrimestres">3 cuatrimestres</option>
+                                    <option value="3 semestres">3 semestres</option>
+                                    <option value="6 meses">6 meses</option>
+                                    <option value="10 meses">10 meses</option>
+                                    <option value="3 años">3 años</option>
+                                    <option value="4 años">4 años</option>
+                                    <option value="5 años">5 años</option>
+                                </select>
+                            </div>
+
+                            <div class="fila">
+                                <label for="modalidadModal">Modalidad:</label>
+                                <select id="modalidadModal">
+                                    <option value="virtual">Virtual</option>
+                                    <option value="presecial">Presencial</option>
+                                    <option value="hibrida">Híbrida</option>
+                                </select>
+                            </div>
+                        </fieldset>
+                        <input type="button" id="guardarLocalModal" value="Guardar datos">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Esto es literalmente un desastre -->
+    <div class="pt-2">
+        <footer class="py-3 pageFooter">
+            <div>
+                <ul class="justify-content-center nav p-1">
+                    <li class="px-5"><span class="material-symbols-outlined">person</span> Juan Ignacio Núñez</li>
+                    <li class="px-5"><span class="material-symbols-outlined">person</span> Mario Ismael López</li>
+                </ul>
+            </div>
+            <div>
+                <ul class="justify-content-center border-bottom pb-3 nav p-1">
+                    <li><span class="material-symbols-outlined">mail</span> juaninun17@gmail.com</li>
+                    <li><span class="material-symbols-outlined footerContacto">mail</span>
+                        mismalop88@hotmail.com</li>
+                </ul>
+            </div>
+            <div id="footerBottom" class="py-2 pb-3">
+                <p id="footerBottomCopyright">UNER FCAD © 2023. Todos los derechos reservados.</p>
+                <p id="footerBottomAmor">Hecho con ❤️</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Import Boostrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script>
+        window.onload = leerCarreras(true);
+    </script>
+</body>
