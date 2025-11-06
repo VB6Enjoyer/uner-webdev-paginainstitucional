@@ -1271,7 +1271,7 @@ function cargarMateriasAsociadasACarrera(carrera) {
 function obtenerNoticias() {
     // Asigna la URL del API a una variable.
     var url = 'https://newsapi.org/v2/top-headlines?' +
-        'country=ar&' +
+        'country=us&' +
         'apiKey=2e9931f26ecd4c618015a7bdeb130fe9';
 
     // Hace el request a la API con la URL guardada en la variable.
@@ -1309,4 +1309,5 @@ function obtenerNoticias() {
         });
 
     //2e9931f26ecd4c618015a7bdeb130fe9 API KEY
+
 }
